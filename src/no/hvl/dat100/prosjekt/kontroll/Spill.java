@@ -29,8 +29,10 @@ public class Spill {
 	public Spill() {
 		
 		// TODO - START
+		nord = new NordSpiller(Spillere.NORD);
+		syd = new SydSpiller(Spillere.SYD);
 		
-		throw new UnsupportedOperationException(TODO.constructor("Spill"));
+		bord = new Bord();
 		// TODO - END
 		
 	}
@@ -43,8 +45,7 @@ public class Spill {
 	public Bord getBord() {
 		
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return bord;
 
 		// TODO - END
 		
@@ -58,8 +59,7 @@ public class Spill {
 	public ISpiller getSyd() {
 		
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return syd;
 
 		// TODO - END
 		
@@ -73,8 +73,7 @@ public class Spill {
 	public ISpiller getNord() {
 		
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
+		return nord;
 
 		// TODO - END
 	}
@@ -91,8 +90,24 @@ public class Spill {
 	public void start() {
 		
 		// TODO - START
+		nord = new NordSpiller(Spillere.NORD);
+		syd = new SydSpiller(Spillere.SYD);
 		
-		throw new UnsupportedOperationException(TODO.method());
+		bord = new Bord();
+		
+		KortSamling fra = bord.getBunkeFra();
+		KortSamling til = bord.getBunkeTil();
+		
+		KortUtils.stokk(fra);
+		
+
+		KortSamling nordhand = nord.getHand();
+		KortSamling sydhand = syd.getHand();
+		
+		for(int i = 0; i < ANTALL_KORT_START; i++) {
+			nordhand.leggTil(bord.getBunkeFra().taSiste());
+			sydhand.leggTil(bord.getBunkeFra().taSiste());
+		}
 		// TODO - END
 	}
 
@@ -104,7 +119,6 @@ public class Spill {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
 		// TODO - END
 	}
 
@@ -121,8 +135,21 @@ public class Spill {
 	public Kort trekkFraBunke(ISpiller spiller) {
 
 		// TODO - START
-			
-		throw new UnsupportedOperationException(TODO.method());
+KortSamling fraBunke = bord.getBunkeFra();
+		
+		if(fraBunke.erTom() == true) {
+			bord.snuTilBunken();
+		} 
+		
+		KortSamling SpillerHand = spiller.getHand();
+		
+		
+		Kort trekketKort = fraBunke.seSiste();	
+		fraBunke.taSiste();
+
+		SpillerHand.leggTil(trekketKort);
+		
+		return trekketKort;
 
 		// TODO - END
 	}
@@ -176,8 +203,7 @@ public class Spill {
 	public void forbiSpiller(ISpiller spiller) {
 		
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		spiller.setAntallTrekk(0);
 	
 		// TODO - END
 	}
@@ -201,8 +227,7 @@ public class Spill {
 		// Hint: del opp i de tre mulige handlinger og vurder 
 		// om noen andre private metoder i klassen kan brukes
 		// til å implementere denne metoden
-				
-		throw new UnsupportedOperationException(TODO.method());
+		
 
 		// TODO - END
 	}

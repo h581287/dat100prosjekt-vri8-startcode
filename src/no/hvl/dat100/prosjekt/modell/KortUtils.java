@@ -18,11 +18,23 @@ public class KortUtils {
 	public static void sorter(KortSamling samling) {
 		
 		// TODO - START
+		Kort temp;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for(int i = 0; i < samling.getSamling().length; i++) {
+			for(int j = i; j > 0; j--) {
+				temp = samling.getSamling()[j];
+				if(temp == null) {
+					continue;
+				}
+				if(temp.compareTo(samling.getSamling()[j-1]) < 0) {
+					samling.getSamling()[j] = samling.getSamling()[j-1];
+					samling.getSamling()[j-1] = temp;
+				}
+			}
+		}
+	
 		// TODO - END
 	}
-	
 	/**
 	 * Stokkar en kortsamling. 
 	 * 
@@ -32,8 +44,18 @@ public class KortUtils {
 	public static void stokk(KortSamling samling) {
 		
 		// TODO - START
+		samling = new KortSamling();
+		Kort[] Stokket = samling.getSamling();
 		
-		throw new UnsupportedOperationException(TODO.method());
+		Random rand = new Random();
+		
+		for(int i = 0; i < Stokket.length; i++) {
+			int indexToSwap = rand.nextInt(Stokket.length);
+			Kort temp = Stokket[indexToSwap];
+			Stokket[indexToSwap] = Stokket[i];
+			Stokket[i] = temp;
+		}
+	
 		// TODO - END
 	}
 	
