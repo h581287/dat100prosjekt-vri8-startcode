@@ -214,7 +214,7 @@ public class Kontroll {
 	 * 
 	 * @param kort
 	 *            kort som spilles.
-	 * 
+	 *
 	 * @return true dersom kortet er lovlig å spille, false ellers.
 	 */
 	private boolean spillkortSyd(Kort kort) {
@@ -222,7 +222,6 @@ public class Kontroll {
 		// TODO - START
 		return spill.leggnedKort(spill.getSyd(), kort);
 		
-		// throw new UnsupportedOperationException(TODO.method());
 		// return null;
 		// TODO - END
 	}
